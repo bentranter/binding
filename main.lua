@@ -1,0 +1,1 @@
+-- Require the C code to be used inside Lua
