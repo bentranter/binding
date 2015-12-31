@@ -1,19 +1,28 @@
 // Regular C libs
-#include <math.h>
+#include <stdio.h>
 
 // Lua libs
 #include <lua.h>
 #include <lauxlib.h>
 #include <lualib.h>
 
-// Register function for use in Lua
-static int l_sin (lua_State *L) {
-  // Get the argument
-  double d = lua_tonumber(L, 1);
+// Elixir libs
 
-  // Push the result
-  lua_pushnumber(L, sin(d));
 
-  // Number of results
+lua_State *L;
+
+static int say_hello(lua_State *L) {
+  const char *s = lua_tostring(L, 1);
+  printf("Hello, %s!\n", s);
+  return 0;
+}
+
+int main(int argc, char *argv[]) {
+  L = lua_open();
+  luaL_openlibs(L);
+
+  lua_register(L, "say_hello", say_hello);
+
+  lua_close(L);
   return 1;
 }
