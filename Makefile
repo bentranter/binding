@@ -1,5 +1,5 @@
 BIN=binding
-LIBS=-llua -llualib
+LIBS=-llua
 
 binding: main.c Makefile
 	clear

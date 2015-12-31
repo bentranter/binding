@@ -18,10 +18,15 @@ static int say_hello(lua_State *L) {
 }
 
 int main(int argc, char *argv[]) {
-  L = lua_open();
+  L = luaL_newstate();
   luaL_openlibs(L);
 
   lua_register(L, "say_hello", say_hello);
+
+  FILE *fp = fopen("main.lua", "r");
+  char buf[256];
+  fread(buf, 256, 1, fp);
+  fclose(fp);
 
   lua_close(L);
   return 1;
