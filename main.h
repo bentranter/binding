@@ -13,20 +13,24 @@
 
 // Regular C libs
 #include <stdio.h>
-#include <string.h>
 
 // Lua libs
 #include <lua.h>
 #include <lauxlib.h>
-#include <lualib.h>
 
 // Elixir libs
 
 
-int main(void) {
-	char buf[256];
-	int err;
+lua_State *L;
 
-	lua_State *L = lua_open();
-	luaL_openlibs(L);
+static int draw_rectangle(lua_State *L) {
+	float x = lua_tonumber(L, 1);
+	float y = lua_tonumber(L, 2);
+}
+
+int main(int argc, char *argv[]) {
+	L = lua_open();
+
+	lua_close(L);
+	return 0;
 }
