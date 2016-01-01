@@ -4,30 +4,54 @@
 // Lua libs
 #include <lua.h>
 #include <lauxlib.h>
-#include <lualib.h>
 
 // Elixir libs
 
-
-lua_State *L;
-
-static int say_hello(lua_State *L) {
-  const char *s = lua_tostring(L, 1);
+// Some normal C function
+void hello(const char *s) {
   printf("Hello, %s!\n", s);
+}
+
+// Function definition. The argument `lua_State *L` is required, since it's
+// the reference to Lua's stack. This is the "wrapped" version of our "normal"
+// C function.
+int say_hello(lua_State *L) {
+
+  // Get arguments by position. The first argument will always be at `1`
+  // instead of `0` because you know how computer scientists love to keep
+  // things consistent *rolls eyes*
+  const char *s = lua_tostring(L, 1);
+
+  // Call the C function on the value obtained from within Lua
+  hello(s);
+
+  // If you return a value, you need to call something like (depending on the
+  // type of thing being returned):
+  //
+  //     lua_pushstring(L, "some string");
+  //
+
+  // Number of things on the stack to return. In our case, we're not returning
+  // anything, so it's okay to return 0
   return 0;
 }
 
-int main(int argc, char *argv[]) {
-  L = luaL_newstate();
-  luaL_openlibs(L);
+// Build a table the basically just maps Lua names to C names
+luaL_Reg binding[] = {
 
-  lua_register(L, "say_hello", say_hello);
+  // Desired Lua name, then C function name
+  {"say_hello", say_hello},
 
-  FILE *fp = fopen("main.lua", "r");
-  char buf[256];
-  fread(buf, 256, 1, fp);
-  fclose(fp);
+  // It always has to end with `{NULL, NULL}`
+  {NULL, NULL}
+};
 
-  lua_close(L);
+// Register the library in Lua. They got rid of `luaL_register`, so now you
+// have to use lua_newtable(L) like a barbarian (just kidding, I know
+// this was changed to prevent devs from registering libraries in the global
+// namespace)
+static int luaopen_binding (lua_State *L) {
+  luaL_newlibtable(L, binding);
+  luaL_setfuncs(L, binding, 0);
   return 1;
 }
