@@ -1,6 +1,6 @@
 binding:
-	gcc -fPIC -o binding.o -c main.c
-	gcc -shared binding.o -o binding.so
+	gcc -Wall -fPIC -c main.c
+	gcc -shared -llua -o binding.so main.o
 
 clean:
 	rm -f $(BIN)

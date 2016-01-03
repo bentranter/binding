@@ -50,7 +50,7 @@ luaL_Reg binding[] = {
 // have to use lua_newtable(L) like a barbarian (just kidding, I know
 // this was changed to prevent devs from registering libraries in the global
 // namespace)
-static int luaopen_binding (lua_State *L) {
+LUALIB_API int luaopen_binding (lua_State *L) {
   luaL_newlibtable(L, binding);
   luaL_setfuncs(L, binding, 0);
   return 1;
