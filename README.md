@@ -15,6 +15,11 @@ Languages
 
 *Upcoming languages*:
 
-- Elixir
+- **Elixir**
 - Go
 - Ruby
+- JavaScript (Node.js)
+- Swift
+- Erlang
+- Python
+- OCaml

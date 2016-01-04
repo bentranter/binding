@@ -57,7 +57,7 @@ LUALIB_API int luaopen_binding (lua_State *L) {
 }
 ```
 
-To compile your code into a (shared object) file (`.so` on Unix, `.dll` on Windows... if you're reading this on Windows, replace `.so` with `.dll` everywhere and it should work) for use by the Lua interpreter, you'll need to first compile your code with a few flags that you might've never seen before:
+To compile your code into a shared object file (`.so` on Unix, `.dll` on Windows... if you're reading this on Windows, replace `.so` with `.dll` everywhere and it should work) for use by the Lua interpreter, you'll need to first compile your code with a few flags that you might've never seen before:
 
 ```bash
 gcc -Wall -fPIC -c your_c_file_name.c
