@@ -3,4 +3,7 @@ binding:
 	gcc -shared -llua -o binding.so main.o
 
 clean:
-	rm -f $(BIN)
+	rm -f binding.so main.o
+
+lua:
+	lua main.lua

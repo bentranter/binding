@@ -8,8 +8,12 @@
 // Elixir libs
 
 // Some normal C function
-void hello(const char *s) {
-  printf("Hello, %s!\n", s);
+void hello(const char *s, int repeat) {
+  int i;
+
+  for (i = 0; i < repeat; i++) {
+    printf("Hello, %s!\n", s);
+  }
 }
 
 // Function definition. The argument `lua_State *L` is required, since it's
@@ -21,9 +25,10 @@ int say_hello(lua_State *L) {
   // instead of `0` because you know how computer scientists love to keep
   // things consistent *rolls eyes*
   const char *s = lua_tostring(L, 1);
+  int repeat = lua_tointeger(L, 2);
 
   // Call the C function on the value obtained from within Lua
-  hello(s);
+  hello(s, repeat);
 
   // If you return a value, you need to call something like (depending on the
   // type of thing being returned):
