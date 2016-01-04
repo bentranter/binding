@@ -5,9 +5,7 @@
 #include <lua.h>
 #include <lauxlib.h>
 
-// Elixir libs
-
-// Some normal C function
+// Some normal native C function we want to call
 void hello(const char *s, int repeat) {
   int i;
 
@@ -16,7 +14,7 @@ void hello(const char *s, int repeat) {
   }
 }
 
-// Function definition. The argument `lua_State *L` is required, since it's
+// Bound function definition. The argument `lua_State *L` is required, since it's
 // the reference to Lua's stack. This is the "wrapped" version of our "normal"
 // C function.
 int say_hello(lua_State *L) {
