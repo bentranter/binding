@@ -1,9 +1,9 @@
 binding:
-	gcc -Wall -fPIC -c main.c
-	gcc -shared -llua -o binding.so main.o
+	gcc -Wall -fPIC -c lua/main.c
+	gcc -shared -llua -o lua/binding.so lua/main.o
 
 clean:
-	rm -f binding.so main.o
+	rm -f lua/binding.so lua/main.o
 
 lua:
-	lua main.lua
+	lua lua/main.lua
