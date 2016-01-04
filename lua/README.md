@@ -63,12 +63,14 @@ To compile your code into a (shared object) file (`.so` on Unix, `.dll` on Windo
 gcc -Wall -fPIC -c your_c_file_name.c
 ```
 
+> Note: Although I use GCC in this example, this works with Clang as well
+
 The `-Wall` flag tells GCC to produce position independent code. Basically, when you're writing code that's going to be dynamically linked (like we've just done), you need to avoid limiting the value of the size of the global offset table. The `-c` option is used to create a `.o` file, which we need to then create a `.so` file.
 
 The next thing you'll need to do is create the shared object `.so` file. To do this, run:
 
 ```bash
--shared -llua -o binding.so your_c_file_name.o
+gcc -shared -llua -o binding.so your_c_file_name.o
 ```
 
 The `-shared` flag tells GCC to make a `.so` file, and the `-llua` flag tells GCC we're using Lua, and to go find the file that helps us with that.
