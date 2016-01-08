@@ -8,7 +8,7 @@
 static ERL_NIF_TERM hello(ErlNifEnv *env, int argc, const ERL_NIF_TERM argv[]) {
 
 	// We need some variables
-	const char *s;
+	char *s;
 	int i, num;
 
 	// Grab the arguments from Elixir
@@ -19,11 +19,12 @@ static ERL_NIF_TERM hello(ErlNifEnv *env, int argc, const ERL_NIF_TERM argv[]) {
 		printf("Hello, %s!\n", s);
 	}
 
-	return 0;
+	// Fancy version of return 0
+	return enif_make_int(env, 0);
 }
 
-static ErlNifFuncs funcs[] = {
+static ErlNifFunc funcs[] = {
 	{"hello", 2, hello}
 };
 
-ERL_NIF_INIT(Elixir.Hello, funcs, &hello)
+ERL_NIF_INIT(Elixir.Hello, funcs, NULL, NULL, NULL, NULL)

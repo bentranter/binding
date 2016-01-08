@@ -8,3 +8,5 @@ Calling C Functions From Elixir
 You can write some NIFs an then export them as a library. To anyone who uses your library, it will look like a typical Elixir module, that is, the user won't notice that your library is written in C using NIFs.
 
 Before trying to figure out how to call a function from C in Elixir, it's probably a good idea to try to understand how to call a function from Erlang in Elixir, since we're really just going to be using *Erlang's* NIF functionality.
+
+**Warning**: If your C code crashes, it'll take the entire Erlang VM down!
