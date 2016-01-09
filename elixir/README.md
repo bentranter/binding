@@ -26,5 +26,5 @@ iex(1)> c "main.ex"
 [Hello]
 iex(2)> Hello.hello('world', 1)
 Hello, world!
-        [0]
+[0]
 ```
