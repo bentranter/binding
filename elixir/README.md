@@ -21,10 +21,10 @@ $ iex
 
 Once IEx has started, you need to import your NIF. After that, you can call a function:
 
-```elixir
+```sh
 iex(1)> c "main.ex"
 [Hello]
-iex(2) Hello.hello('world', 1)
+iex(2)> Hello.hello('world', 1)
 Hello, world!
         [0]
 ```
