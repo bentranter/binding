@@ -10,3 +10,21 @@ You can write some NIFs an then export them as a library. To anyone who uses you
 Before trying to figure out how to call a function from C in Elixir, it's probably a good idea to try to understand how to call a function from Erlang in Elixir, since we're really just going to be using *Erlang's* NIF functionality.
 
 **Warning**: If your C code crashes, it'll take the entire Erlang VM down!
+
+Usage within IEx
+---
+The easiest way to try our your NIF is with IEx. To do this start IEx:
+
+```sh
+$ iex
+```
+
+Once IEx has started, you need to import your NIF. After that, you can call a function:
+
+```elixir
+iex(1)> c "main.ex"
+[Hello]
+iex(2) Hello.hello('world', 1)
+Hello, world!
+        [0]
+```
