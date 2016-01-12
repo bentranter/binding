@@ -12,12 +12,12 @@ Languages
 ---
 
 - Lua
+- Elixir
+- Go
 
 *Upcoming languages*:
 
-- **Elixir**
-- Go
-- Ruby
+- **Ruby**
 - JavaScript (Node.js)
 - Swift
 - Erlang
