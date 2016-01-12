@@ -28,3 +28,8 @@ Suggestions
 ---
 
 If you want to suggest a language, please open an issue, or better yet, submit a PR!
+
+Note About Windows
+---
+
+I have used `.so` files in most examples. Although you should be able to change the Makefiles to produce `.dll` files on Windows, I haven't tried it myself, so I can't guarantee that it'll work. I promise to either try to fix this one day, or ask a friend who develops on Windows to help me, heh.
