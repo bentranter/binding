@@ -1,7 +1,7 @@
 Calling C from Ruby
 ---
 
-Calling C from Ruby is pretty similar to the other languages in this repo - you write some C, write a function that maps function names, and generate a shared object so link with the Ruby runtime. However, Ruby has a utility to generate Makefiles based on your C code, which makes life about a million times easier, sicne there's no need to write an insane Makefile yourself.
+Calling C from Ruby is pretty similar to the other languages in this repo - you write some C, write a function that maps function names, and generate a shared object so link with the Ruby runtime. However, Ruby has a utility to generate Makefiles based on your C code, which makes life about a million times easier, since there's no need to write an insane Makefile yourself.
 
 The Ruby code for this is incredibly simple:
 
@@ -21,3 +21,5 @@ static VALUE hello(int argc, VALUE *argv, VALUE self);
 ```
 
 You (obviously) need to inclulde the library `<ruby.h>`. Your functions that talk to Ruby need to start with `VALUE`, and have the arguments above in the function definition.
+
+Unlike the other repos in here, this will work on both Unix and Windows machines, since the Makefile is generated for your platform.
