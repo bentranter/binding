@@ -20,6 +20,6 @@ The C file is a bit different:
 static VALUE hello(int argc, VALUE *argv, VALUE self);
 ```
 
-You (obviously) need to inclulde the library `<ruby.h>`. Your functions that talk to Ruby need to start with `VALUE`, and have the arguments above in the function definition.
+You (obviously) need to include the library `<ruby.h>`. Your functions that talk to Ruby need to start with `VALUE`, and have the arguments above in the function definition.
 
 Unlike the other repos in here, this will work on both Unix and Windows machines, since the Makefile is generated for your platform.
